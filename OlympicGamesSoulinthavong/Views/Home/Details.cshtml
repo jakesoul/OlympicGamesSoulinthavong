@@ -1,0 +1,35 @@
+﻿@model CountryViewModel
+@{ ViewData["Title"] = "Team Details"; }
+
+<h2>Country Details</h2>
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+        <ul class="list-group text-center">
+            <li class="list-group-item">
+                <img src="~/Flags/@Model.Country.LogoImage" alt="" style="width: 200px; height: 150px; padding: 0.5em; border: solid 0.25px; color: red;" />
+                <h3>@Model.Country.Name</h3>
+            </li>
+            <li class="list-group-item">
+                <h4>Olympic Games: @Model.Country.OlympicGame.Name</h4>
+            </li>
+            <li class="list-group-item">
+                <h4>Category: @Model.Country.Sport.Name</h4>
+            </li>
+            <li class="list-group-item">
+                <a asp-action="Index" asp-route-OlympicGame="@Model.ActiveOlympicGame" asp-route-Category="@Model.ActiveCategory">
+                    Return to Home Page
+                </a>
+            </li>
+            <li class="list-group-item">
+                <form asp-action="Add" method="post">
+                    <a asp-action="Index" class="btn btn-primary" asp-route-activeOlympicGame="@Model.ActiveOlympicGame" asp-route-activeSport="@Model.ActiveCategory">
+                        Return to Home Page
+                    </a>
+                    <button type="submit" class="btn btn=primary">Add to Favorites</button>
+                    <input type="hidden" asp-for="Country.CountryID" />
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
